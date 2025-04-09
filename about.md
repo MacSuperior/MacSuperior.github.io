@@ -1,4 +1,4 @@
 # About
 
-This is where you put the contents of your *About* page. Like all your pages, it's in [Markdown](https://guides.github.com/features/mastering-markdown/) format.
+I am a Dutch student with a passion for learning. I am currently reading *Pattern Recognition and Machine Learning* by Christopher M. Bishop, and *Dive into Deep Learning* by Aston Zhang et al.
 
