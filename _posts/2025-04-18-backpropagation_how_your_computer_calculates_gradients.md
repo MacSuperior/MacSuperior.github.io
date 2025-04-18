@@ -3,7 +3,6 @@
 - description: "How backpropagation is used to compute gradients in neural networks, using computational graphs and the chain rule."
 - layout: post
 - toc: true
-- badges: false
 - comments: true
 ---
 
