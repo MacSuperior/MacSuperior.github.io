@@ -1,10 +1,7 @@
----
-- title: "Backpropagation: How Does Your Computer Calculate Gradients?"
-- description: "How backpropagation is used to compute gradients in neural networks, using computational graphs and the chain rule."
-- layout: post
-- toc: true
-- comments: true
----
+
+# Backpropagation: How Does Your Computer Calculate Gradients?
+> How backpropagation is used to compute gradients in neural networks, using computational graphs and the chain rule.
+
 
 A neural network consists of initially random weights and biases. Training the network boils down to minimizing a loss function that quantifies how wrong the network's output is compared to the desired output. Gradient descent is the algorithm used for finding weights and biases that minimize the loss. The way these parameters are updated is determined by taking a step in the direction of the negative *gradient* of the loss function, which can be thought of as following an arrow that points towards where the loss function decreases the quickest. The problem is: how do we calculate this gradient? 
 
