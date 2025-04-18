@@ -24,7 +24,7 @@ The way a computer evaluates that function is by constructing a computational gr
 
 Backpropagation uses this graph, storing intermediate computations that it will later need along the way. This is called the *forward pass*. 
 
-![](/images/backpropagation/forward.png "Intermediate computation results are stored at the node they are computed")
+![](/images/backpropagation/forward.png "Intermediate computation results are stored at the node they are computed.")
 
 Let's name the nodes as follows:
 
