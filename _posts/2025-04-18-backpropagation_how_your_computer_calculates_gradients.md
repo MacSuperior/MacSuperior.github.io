@@ -24,7 +24,7 @@ The way a computer evaluates that function is by constructing a computational gr
 
 Backpropagation uses this graph, storing intermediate computations that it will later need along the way. This is called the *forward pass*. 
 
-![](../images/backpropagation/forward.png)
+![](/images/backpropagation/forward.png)
 
 Let's name the nodes as follows:
 
@@ -62,10 +62,10 @@ During the forward pass, every node received input from its *upstream* nodes, pe
 ## Propagating backward
 Let's zoom in on a random node during the backward pass. 
 
-![](../images/backpropagation/node.png)
+![](/images/backpropagation/node.png)
 Eventually, this node will receive a number from its output node, called the <span style="color:rgb(221, 46, 34);background-color:yellow">upstream gradient</span>. This represents the change in the loss function all the way at the end of the graph when the output of this particular node changes. If the node receives multiple upstream gradients, it sums them up. After receiving the upstream gradient, the node computes <span style="color:rgb(68, 109, 195)">local gradients</span>, which represent how much each output of the node is affected by each input to the node. The node then calculates how each of its inputs affects the loss by multiplying each local gradient by the upstream gradient, and passes these <span style="color:rgb(221, 46, 34);">downstream gradients</span> to the respective input nodes. These input nodes then receive it as their own upstream gradient, repeating the process. This entire process is a repeated application of the *chain rule*, which lets us compute how an input affects the final output through intermediate variables. When the process reaches the beginning of the graph, each input received an upstream gradient, meaning that we have the gradient of the loss function with respect to the inputs, and we are able to perform an iteration of gradient descent. 
 
-![](../images/backpropagation/backward.png "The end of the backward pass, we now know how each input affects the loss.")
+![](/images/backpropagation/backward.png "The end of the backward pass, we now know how each input affects the loss.")
 
 To summarize, a node:
 1. Receives an upstream gradient
