@@ -1,6 +1,6 @@
 ---
 title: "Why this blog?"
-description: "The motivation for creating this website. Scroll down to view the list of posts!"
+description: "The reasoning for creating this website. Scroll down to view the list of posts!"
 listing:
   contents: posts
   sort: "date desc"
