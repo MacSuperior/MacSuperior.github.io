@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="The reasoning for creating this website. Scroll down to view the list of posts!">
+<meta name="author" content="MacSuperior">
+<meta name="dcterms.date" content="2025-04-20">
+<meta name="description" content="How backpropagation is used to compute gradients in neural networks, using computational graphs and the chain rule.">
 
-<title>Why this blog? – Learning Journey: MacSuperior’s Blog</title>
+<title>Backpropagation: How Does Your Computer Calculate Gradients? – Learning Journey: MacSuperior’s Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -129,7 +100,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -139,7 +110,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Learning Journey: MacSuperior’s Blog</span>
     </a>
   </div>
@@ -150,7 +121,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -174,19 +145,34 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Why this blog?</h1>
+      <h1 class="title">Backpropagation: How Does Your Computer Calculate Gradients?</h1>
                   <div>
         <div class="description">
-          The reasoning for creating this website. Scroll down to view the list of posts!
+          How backpropagation is used to compute gradients in neural networks, using computational graphs and the chain rule.
         </div>
       </div>
-                </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">explanation</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>MacSuperior </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 20, 2025</p>
+      </div>
+    </div>
     
       
     </div>
@@ -196,8 +182,18 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwbGFuYXRpb24=">explanation <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-backpropagation" id="toc-why-backpropagation" class="nav-link active" data-scroll-target="#why-backpropagation">Why backpropagation?</a></li>
+  <li><a href="#the-computational-graph" id="toc-the-computational-graph" class="nav-link" data-scroll-target="#the-computational-graph">The computational graph</a></li>
+  <li><a href="#calculating-derivatives" id="toc-calculating-derivatives" class="nav-link" data-scroll-target="#calculating-derivatives">Calculating derivatives</a></li>
+  <li><a href="#propagating-backward" id="toc-propagating-backward" class="nav-link" data-scroll-target="#propagating-backward">Propagating backward</a></li>
+  <li><a href="#looking-back" id="toc-looking-back" class="nav-link" data-scroll-target="#looking-back">Looking back</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -205,74 +201,82 @@ window.Quarto = {
 
 
 
-<p>It is said that writing about a topic deepens your understanding of that topic, and there is a lot of writing involved with a blog. Additionally, this blog will serve as a good self-motivator to keep steadily learning about my interests. And who knows, maybe people will eventually end up reading it… (Although at the moment of writing I only have one post. Nice!)</p>
-<p>That being said, now it is time to dive into my self study and when I learn something new, I will post an update on here. In the meantime, look at this cool picture of the loss landscape of a neural network generated by <a href="https://arxiv.org/abs/1712.09913">Li et al.</a>, bye!</p>
-<p><img src="./nn-loss-landscape.png" class="img-fluid"></p>
+<section id="why-backpropagation" class="level2">
+<h2 class="anchored" data-anchor-id="why-backpropagation">Why backpropagation?</h2>
+<p>A neural network consists of initially random weights and biases. Training the network boils down to minimizing a loss function that quantifies how wrong the network’s output is compared to the desired output. Gradient descent is the algorithm used for finding weights and biases that minimize the loss. The way these parameters are updated is determined by taking a step in the direction of the negative <em>gradient</em> of the loss function, which can be thought of as following an arrow that points towards where the loss function decreases the quickest. The problem is: how do we calculate this gradient?</p>
+<p>A first idea might be to grab a piece of paper and derive the gradient by hand. This is very tedious, requiring lots of matrix calculus and paper, and is infeasible for complex models. Additionally, this solution is not modular, since when you want to change something about the network or loss, you need to recalculate the gradient from scratch. We would like to implement an automatic way of calculating the gradient. Let’s look at some ways we could do this, excluding backpropagation for now.</p>
+<ol type="1">
+<li><strong>Numerical method</strong>: Adjust each parameter by a little and see how the loss changes in response. This method lacks precision and does not scale to large neural networks, where it would lead to lots of repeated computations, making it very slow.</li>
+<li><strong>Symbolic method</strong>: The thought behind this method is that once an expression for the gradient is found, evaluating it can be fast. This method uses calculus rules to derive an exact expression for the gradient, but is even slower than the numerical method due to large, repeated expressions, making it infeasible to use in practice.</li>
+</ol>
+<p>This is where backpropagation steps in. It brings exact precision while at the same time being extremely quick, making it the standard for updating parameters in neural networks.</p>
+</section>
+<section id="the-computational-graph" class="level2">
+<h2 class="anchored" data-anchor-id="the-computational-graph">The computational graph</h2>
+<p>Let’s see backpropagation in action through a simple example. Let’s say that we want to minimize the made-up loss function:</p>
+<p><span class="math display">\[
+L(x, y, z) = (x + y)z
+\]</span></p>
+<p>The way a computer evaluates that function is by constructing a computational graph, consisting of several nodes and edges. It calculates the result by calculating the value at each node and passing it forward to the next node, until it reaches the end of the computation.</p>
+<p>Backpropagation uses this graph, storing intermediate computations that it will later need along the way. This is called the <em>forward pass</em>.</p>
+<p><img src="./images/backward.png" title="Intermediate computation results are stored at the node they are computed." class="img-fluid"></p>
+<p>Let’s name the nodes as follows:</p>
+<p><span class="math display">\[
+\begin{align}
+    q &amp;= x + y \\
+    L &amp;= zq
+\end{align}
+\]</span></p>
+<p>We see that the derivatives are</p>
+<p><span class="math display">\[
+\frac{\partial L}{\partial z} = q,
+\frac{\partial L}{\partial q} = z,
+\frac{\partial q}{\partial x} = 1,
+\frac{\partial q}{\partial y} = 1.
+\]</span></p>
+<p>These represent the effect that <span class="math inline">\(z\)</span> and <span class="math inline">\(q\)</span> have on <span class="math inline">\(L\)</span>, and the effect that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> have on <span class="math inline">\(q\)</span>. However, we are not done yet! Remember that our goal was not to find <em>these</em> derivatives, but to find <span class="math inline">\(\frac{\partial L}{\partial x}, \frac{\partial L}{\partial y}\text{ } \text{and } \frac{\partial L}{\partial z}\)</span>: the effect that <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span> have on the loss <span class="math inline">\(L\)</span> at the end of the graph.</p>
+</section>
+<section id="calculating-derivatives" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-derivatives">Calculating derivatives</h2>
+<p>Looking at the graph, we see that when the input to <span class="math inline">\(q\)</span> changes by <span class="math inline">\(\partial x\)</span>, its output changes by <span class="math inline">\(\frac{\partial q}{\partial x}\)</span> as a result. How much <span class="math inline">\(L\)</span> changes in response to a change in <span class="math inline">\(q\)</span> is given by <span class="math inline">\(\frac{\partial L}{\partial q}\)</span>. So the effect that a change in <span class="math inline">\(x\)</span> has on <span class="math inline">\(L\)</span>, is given by chaining these effects together: <span class="math inline">\(\frac{\partial L}{\partial x} = \frac{\partial L}{\partial q}\frac{\partial q}{\partial x}\)</span>.</p>
+<p>Following the same reasoning, we see that <span class="math inline">\(\frac{\partial L}{\partial y} = \frac{\partial L}{\partial q}\frac{\partial q}{\partial y}\)</span>.</p>
+<p>Since <span class="math inline">\(z\)</span> directly affects <span class="math inline">\(L\)</span> without intermediate nodes, the change in <span class="math inline">\(L\)</span> from a change in <span class="math inline">\(z\)</span> is simply given by <span class="math inline">\(\frac{\partial L}{\partial z}\)</span></p>
+<p>We compute these values by moving from the end of the graph back to the beginning, this is called the <em>backward pass</em>.</p>
+<p>During the forward pass, every node received input from its <em>upstream</em> nodes, performed a basic computation, and then passed the result forward to its <em>downstream</em> nodes. When the final node in the graph computes its output, the computation is done. At that point the backward pass will start.</p>
+<blockquote class="blockquote">
+<p>Note: A downstream node is one that comes after the flow of data (i.e., closer to the output), and an upstream node is one that comes before (i.e., closer to the input). In the backward pass, since data flows from output to input, the terms are used in reverse.</p>
+</blockquote>
+</section>
+<section id="propagating-backward" class="level2">
+<h2 class="anchored" data-anchor-id="propagating-backward">Propagating backward</h2>
+<p>Let’s zoom in on a random node during the backward pass.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/node.png" class="img-fluid figure-img"></p>
+<figcaption>A node calculating how its inputs affect the loss, passing these values downstream.</figcaption>
+</figure>
+</div>
+<p>Eventually, this node will receive a number from its output node, called the <span style="color:rgb(221, 46, 34);background-color:yellow">upstream gradient</span>. This represents the change in the loss function all the way at the end of the graph when the output of this particular node changes. If the node receives multiple upstream gradients, it sums them up. After receiving the upstream gradient, the node computes <span style="color:rgb(68, 109, 195)">local gradients</span>, which represent how much each output of the node is affected by each input to the node. The node then calculates how each of its inputs affects the loss by multiplying each local gradient by the upstream gradient, and passes these <span style="color:rgb(221, 46, 34);">downstream gradients</span> to the respective input nodes. These input nodes then receive it as their own upstream gradient, repeating the process.</p>
+<p>This entire process is a repeated application of the <em>chain rule</em>, which lets us compute how an input affects the final output through intermediate variables. When the process reaches the beginning of the graph, each input received an upstream gradient, meaning that we have the gradient of the loss function with respect to the inputs, and we are able to perform an iteration of gradient descent.</p>
+<p><img src="./images/backward.png" title="The end of the backward pass, we now know how each input affects the loss." class="img-fluid"></p>
+<p>To summarize, a node:</p>
+<ol type="1">
+<li>Receives an upstream gradient</li>
+<li>Passes along downstream gradients by multiplying the upstream gradient with local gradients.</li>
+</ol>
+<p>The only thing left to do is to calculate these local gradients.</p>
+<p>We do this by defining the local gradient for all node types we have in our graph beforehand.</p>
+<p>In the case of an addition node, the local gradients are <span class="math inline">\(1\)</span>, so the downstream gradients are just the upstream gradient. For multiplication nodes, the local gradient with respect to an input node <span class="math inline">\(a\)</span> is simply the product of all other input nodes. In a two-input case, this means that the gradient with respect to <span class="math inline">\(a\)</span> is simply the other input. Other node types have simple gradient calculations as well!</p>
+</section>
+<section id="looking-back" class="level2">
+<h2 class="anchored" data-anchor-id="looking-back">Looking back</h2>
+<p>Thinking about calculating the gradient in terms of this computational graph has melted away all our initial problems. Remember that calculating the gradient by hand is tedious or infeasible, but using backpropagation it has become trivial! Secondly, we no longer need to recalculate the gradient when we change the structure of the model. This is because the building blocks of the graph remain the same, so whilst the graph could have a different structure, the backpropagation algorithm remains the same, so our modularity issue is solved! Finally, backpropagation does not need to repeat calculations, making it extremely fast, and suitable for training deep neural networks.</p>
+<p>Thank you for reading! I recommend that you check out Justin Johnson’s <a href="https://youtu.be/dB-u77Y5a6A?si=kowHAWgzkWyiI838">excellent video</a>, which goes in-depth on generalizing to vector and tensor valued functions, and which this post was based upon.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="ZXhwbGFuYXRpb24=" data-listing-date-sort="1745100000000" data-listing-file-modified-sort="1745173328067" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1247">
-<div class="thumbnail">
-<p><a href="./posts/backpropagation/index.html" class="no-external"></a></p><a href="./posts/backpropagation/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/backpropagation/images/backward.png" title="Intermediate computation results are stored at the node they are computed." class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/backpropagation/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/backpropagation/index.html" class="no-external">Backpropagation: How Does Your Computer Calculate Gradients?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/backpropagation/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ZXhwbGFuYXRpb24='); return false;">
-explanation
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/backpropagation/index.html" class="no-external">How backpropagation is used to compute gradients in neural networks, using computational graphs and the chain rule.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/backpropagation/index.html" class="no-external">
-<div class="listing-date">
-Apr 20, 2025
-</div>
-<div class="listing-author">
-MacSuperior
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -363,7 +367,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/MacSuperior\.github\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
