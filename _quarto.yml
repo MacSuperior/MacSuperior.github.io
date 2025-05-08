@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Learning Journey: MacSuperior's Blog"
+  title: "Liam's Learning"
   navbar:
     left:
       - 100-days-of-pytorch.qmd
