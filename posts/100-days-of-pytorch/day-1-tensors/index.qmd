@@ -1,5 +1,5 @@
 ---
-title: "Pytorch Basics: Tensors"
+title: "Day 1: Pytorch Basics - Tensors"
 description: "Tensors lie at the heart of PyTorch. If we want to be proficient in PyTorch, we need to know what we can do with the `Tensor` object. There are over 1200 possible operations to perform on tensors, but only a few are needed to get started with PyTorch. In this post we learn what a Tensor is and how to perform basic operations with them. Familiarity with python programming is assumed."
 date: "2025-05-08" 
 jupyter: python3
