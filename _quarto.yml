@@ -2,6 +2,7 @@ project:
   type: website
 
 website:
+  google-analytics: "G-41DNWB0BJ3"
   title: "Liam's Learning"
   navbar:
     left:
