@@ -11,10 +11,11 @@ website:
       - about.qmd
       - icon: github
         href: https://github.com/liamgroen
+  comments:
+    giscus:
+      repo: "liamgroen/liamgroen.github.io"
 
-comments:
-  giscus:
-    repo: "liamgroen/liamgroen.github.io"
+
 
 format:
   html:
