@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://liamgroen.github.io/about.html</loc>
-    <lastmod>2025-05-10T03:13:55.288Z</lastmod>
+    <loc>https://liamgroen.nl/about.html</loc>
+    <lastmod>2025-05-10T12:02:08.779Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.github.io/100-days-of-pytorch.html</loc>
-    <lastmod>2025-05-10T03:13:55.285Z</lastmod>
+    <loc>https://liamgroen.nl/100-days-of-pytorch.html</loc>
+    <lastmod>2025-05-10T12:02:08.776Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.github.io/posts/100-days-of-pytorch/day-1-tensors/index.html</loc>
-    <lastmod>2025-05-10T03:13:55.298Z</lastmod>
+    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-1-tensors/index.html</loc>
+    <lastmod>2025-05-10T12:02:08.789Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.github.io/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html</loc>
-    <lastmod>2025-05-10T03:13:55.298Z</lastmod>
+    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html</loc>
+    <lastmod>2025-05-10T12:02:08.789Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.github.io/posts/backpropagation/index.html</loc>
-    <lastmod>2025-05-10T03:13:55.314Z</lastmod>
+    <loc>https://liamgroen.nl/posts/backpropagation/index.html</loc>
+    <lastmod>2025-05-10T12:02:08.805Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.github.io/index.html</loc>
-    <lastmod>2025-05-10T03:13:55.288Z</lastmod>
+    <loc>https://liamgroen.nl/index.html</loc>
+    <lastmod>2025-05-10T12:02:08.779Z</lastmod>
   </url>
 </urlset>
