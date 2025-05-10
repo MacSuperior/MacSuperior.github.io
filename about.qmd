@@ -1,14 +1,44 @@
 ---
 title: "About"
-image: profile.jpg
+image: profile.png
 about:
   template: jolla
   links:
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/liamgroen
+    - icon: linkedin
+      text: LinkedIn
+      href: www.linkedin.com/in/liamgroen
 
 ---
 
-I am a Dutch student with a passion for learning. 
-Machine learning is a topic that I'm interested in, but have only learned the basics of during my studies. That is why I am trying to deepen my knowledge in the subject by reading a lot of books. Currently I am reading the classic *Pattern Recognition and Machine learning*, along with following the PyTorch tutorials, commiting myself to learn something every day!
+# About Me
+
+Hi, I'm **Liam Groen**, a student from the Netherlands with a deep interest in **machine learning**, **data science**, and **mathematics**.
+
+I'm currently focused on building a strong foundation in ML by combining theory and practice:  
+📘 Reading _Pattern Recognition and Machine Learning_ by Bishop  
+🧪 Working through PyTorch tutorials and hands-on experiments  
+🎯 Committing to learn and build *something new every day*
+
+This blog is where I document what I'm learning — not only as a study aid, but as a way to share insights and connect with others on a similar journey.
+
+---
+
+## My Learning Goals
+
+- Build solid understanding of machine learning fundamentals  
+
+- Get hands-on experience with real-world data and models  
+
+- Prepare for internships and a career in applied AI
+
+---
+
+## Let's Connect
+
+I'm always open to collaborating, learning together, or hearing from others in the field. Feel free to reach out on [LinkedIn](https://www.linkedin.com/in/liamgroen) or check out my [GitHub projects](https://github.com/liamgroen).
+
+![Neural network loss landscape](./nn-loss-landscape.png)  
+*Visualizing the optimization terrain of deep networks — [Li et al. (2018)](https://arxiv.org/abs/1712.09913).*
