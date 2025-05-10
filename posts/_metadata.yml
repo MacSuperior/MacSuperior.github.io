@@ -12,3 +12,14 @@ author: Liam Groen
 toc: true
 toc-depth: 3
 
+
+comments:
+    giscus:
+      repo: liamgroen/liamgroen.github.io
+      repo-id: R_kgDOOcyOeQ
+      category: Announcements
+      category-id: DIC_kwDOOcyOec4Cp8kl
+      mapping: pathname
+      reactions-enabled: true
+      input-position: top
+      language: en
