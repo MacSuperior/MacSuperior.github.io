@@ -5,7 +5,6 @@ listing:
     contents: posts/100-days-of-pytorch
     sort: "date desc"
     type: default
-    categories: true
     sort-ui: true
     filter-ui: false
 ---
