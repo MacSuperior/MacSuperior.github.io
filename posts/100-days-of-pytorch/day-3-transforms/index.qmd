@@ -58,4 +58,3 @@ In this code, we specified that we want to convert our training data to a tensor
 ## Further reading
 
 There are many more things we can do with transforms. We can rotate images, shift images, or we can chain transformations together to create a preprocessing pipeline. Since those usecases are too advanced for us at the moment, I will not cover them in this post. However, if you are curious or already more experienced, I recommend that you check out the [example section](https://docs.pytorch.org/vision/stable/auto_examples/index.html#gallery) on the Pytorch Website!
-
