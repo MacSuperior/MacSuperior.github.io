@@ -2,6 +2,7 @@
 title: "Posts"
 page-layout: article
 title-block-banner: true
+title-block-style: default
 listing:
     contents: posts
     sort: "date desc"
