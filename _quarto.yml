@@ -10,6 +10,7 @@ website:
   navbar:
     left:
       - 100-days-of-pytorch.qmd
+      - posts.qmd
     right:
       - about.qmd
       - icon: github
