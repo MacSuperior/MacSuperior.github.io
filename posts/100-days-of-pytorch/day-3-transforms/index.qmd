@@ -7,7 +7,7 @@ jupyter: python3
 
 ## Why do we need transform?
 
-Data comes in many different formats. On the other hand, PyTorch can only do machine learning with one data type, the tensor. Transforms can convert any data to a tensor. In this post, we will look at how to transform images. I will assume that you are familiar with PyTorch Datasets. If you are not, I recommend reading [this post]() before you continue.
+Data comes in many different formats. On the other hand, PyTorch can only do machine learning with one data type, the tensor. Transforms can convert any data to a tensor. In this post, we will look at how to transform images. I will assume that you are familiar with PyTorch Datasets. If you are not, I recommend reading [this post](../day-2-datasets-dataloaders/index.qmd) before you continue.
 
 
 ## How do PyTorch transforms work?
