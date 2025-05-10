@@ -84,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -151,7 +151,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -343,6 +343,10 @@ window.Quarto = {
     <a class="nav-link active" href="./100-days-of-pytorch.html" aria-current="page"> 
 <span class="menu-text">100 Days Of PyTorch</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
@@ -366,9 +370,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==">100 Days Of PyTorch <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -424,7 +426,7 @@ window.Quarto = {
   </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746748800000" data-listing-file-modified-sort="1746881627321" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1188">
+<div class="quarto-post image-right" data-index="0" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746748800000" data-listing-file-modified-sort="1746881929936" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1188">
 <div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">
 
 <p class="card-img-top"><img src="posts/100-days-of-pytorch/day-2-datasets-dataloaders/index_files/figure-html/cell-8-output-1.png"  class="thumbnail-image card-img"/></p>
@@ -434,11 +436,6 @@ window.Quarto = {
 <h3 class="no-anchor listing-title">
 <a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">Day 2: PyTorch Basics - Dataset and DataLoader</a>
 </h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA=='); return false;">100 Days Of PyTorch</div>
-
-</div>
 <div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">
 <p>In this post we learn about how to download datasets with PyTorch Datasets, and how to retrieve data from them for training an ML model while keeping data and model separate. We will see that working with these classes is pretty easy, and allows us to use all kinds of handy built-in methods.</p>
 </a></div>
@@ -454,7 +451,7 @@ Liam Groen
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746662400000" data-listing-file-modified-sort="1746881627321" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="740">
+<div class="quarto-post image-right" data-index="1" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746662400000" data-listing-file-modified-sort="1746881929936" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="740">
 <div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">
 
 <p class="card-img-top"><img src="posts/100-days-of-pytorch/day-1-tensors/images/tensor.png"  class="thumbnail-image card-img"/></p>
@@ -464,11 +461,6 @@ Liam Groen
 <h3 class="no-anchor listing-title">
 <a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">Day 1: Pytorch Basics - Tensors</a>
 </h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA=='); return false;">100 Days Of PyTorch</div>
-
-</div>
 <div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">
 <p>Tensors lie at the heart of PyTorch. If we want to be proficient in PyTorch, we need to know what we can do with the <code>Tensor</code> object. There are over 1200 possible operations to perform on tensors, but only a few are needed to get started with PyTorch. In this post we learn what a Tensor is and how to perform basic operations with them. Familiarity with python programming is assumed.</p>
 </a></div>

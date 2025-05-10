@@ -1,5 +1,13 @@
 [
   {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html",
+      "/posts/100-days-of-pytorch/day-1-tensors/index.html",
+      "/posts/backpropagation/index.html"
+    ]
+  },
+  {
     "listing": "/100-days-of-pytorch.html",
     "items": [
       "/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html",

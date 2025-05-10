@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Liam’s Learning</title>
+<title>Posts – Liam’s Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,10 +30,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2b3e328b71be8d25427581baeb23079b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -70,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-41DNWB0BJ3"></script>
 
 <script type="text/javascript">
@@ -85,11 +117,40 @@ gtag('js', new Date());
 gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -263,7 +324,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -282,13 +343,13 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <span class="menu-text">100 Days Of PyTorch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
+    <a class="nav-link active" href="./posts.html" aria-current="page"> 
 <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -305,63 +366,160 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Posts</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==">100 Days Of PyTorch <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZXhwbGFuYXRpb24=">explanation <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="profile.png" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About</h1>
-</div>
-<div class="quarto-title-meta">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Author
+      </option>
+    </select>
   </div>
-</header><main class="content" id="quarto-document-content">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746748800000" data-listing-file-modified-sort="1746881929936" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1188">
+<div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">
 
-<section id="about-me" class="level1">
-<h1>About Me</h1>
-<p>Hi, I’m <strong>Liam Groen</strong>, a student from the Netherlands with a deep interest in <strong>machine learning</strong>, <strong>data science</strong>, and <strong>mathematics</strong>.</p>
-<p>I’m currently focused on building a strong foundation in ML by combining theory and practice:<br>
-📘 Reading <em>Pattern Recognition and Machine Learning</em> by Bishop<br>
-🧪 Working through PyTorch tutorials and hands-on experiments<br>
-🎯 Committing to learn and build <em>something new every day</em></p>
-<p>This blog is where I document what I’m learning — not only as a study aid, but as a way to share insights and connect with others on a similar journey.</p>
-<hr>
-<section id="my-learning-goals" class="level2">
-<h2 data-anchor-id="my-learning-goals">My Learning Goals</h2>
-<ul>
-<li><p>Build solid understanding of machine learning fundamentals</p></li>
-<li><p>Get hands-on experience with real-world data and models</p></li>
-<li><p>Prepare for internships and a career in applied AI</p></li>
-</ul>
-<hr>
-</section>
-<section id="lets-connect" class="level2">
-<h2 data-anchor-id="lets-connect">Let’s Connect</h2>
-<p>I’m always open to collaborating, learning together, or hearing from others in the field. Feel free to reach out on <a href="https://www.linkedin.com/in/liamgroen">LinkedIn</a> or check out my <a href="https://github.com/liamgroen">GitHub projects</a>.</p>
-<p><img src="./nn-loss-landscape.png" class="img-fluid" alt="Neural network loss landscape"><br>
-<em>Visualizing the optimization terrain of deep networks — <a href="https://arxiv.org/abs/1712.09913">Li et al.&nbsp;(2018)</a>.</em></p>
+<p class="card-img-top"><img src="posts/100-days-of-pytorch/day-2-datasets-dataloaders/index_files/figure-html/cell-8-output-1.png"  class="thumbnail-image card-img"/></p>
 
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">Day 2: PyTorch Basics - Dataset and DataLoader</a>
+</h3>
+<div class="listing-categories">
 
-</section>
-</section>
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://github.com/liamgroen" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-  <a href="/www.linkedin.com/in/liamgroen" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA=='); return false;">100 Days Of PyTorch</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">
+<p>In this post we learn about how to download datasets with PyTorch Datasets, and how to retrieve data from them for training an ML model while keeping data and model separate. We will see that working with these classes is pretty easy, and allows us to use all kinds of handy built-in methods.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">
+<div class="listing-date">
+May 9, 2025
+</div>
+<div class="listing-author">
+Liam Groen
+</div>
+</a>
 </div>
 </div>
- <!-- /main -->
+<div class="quarto-post image-right" data-index="1" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746662400000" data-listing-file-modified-sort="1746881929936" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="740">
+<div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/100-days-of-pytorch/day-1-tensors/images/tensor.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">Day 1: Pytorch Basics - Tensors</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA=='); return false;">100 Days Of PyTorch</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">
+<p>Tensors lie at the heart of PyTorch. If we want to be proficient in PyTorch, we need to know what we can do with the <code>Tensor</code> object. There are over 1200 possible operations to perform on tensors, but only a few are needed to get started with PyTorch. In this post we learn what a Tensor is and how to perform basic operations with them. Familiarity with python programming is assumed.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">
+<div class="listing-date">
+May 8, 2025
+</div>
+<div class="listing-author">
+Liam Groen
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="ZXhwbGFuYXRpb24=" data-listing-date-sort="1745107200000" data-listing-file-modified-sort="1746881929952" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1247">
+<div class="thumbnail"><a href="./posts/backpropagation/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/backpropagation/images/backward.png" title="Intermediate computation results are stored at the node they are computed." class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/backpropagation/index.html" class="no-external">Backpropagation: How Does Your Computer Calculate Gradients?</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZXhwbGFuYXRpb24='); return false;">explanation</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/backpropagation/index.html" class="no-external">
+<p>How backpropagation is used to compute gradients in neural networks, using computational graphs and the chain rule.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/backpropagation/index.html" class="no-external">
+<div class="listing-date">
+Apr 20, 2025
+</div>
+<div class="listing-author">
+Liam Groen
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -377,6 +535,13 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
