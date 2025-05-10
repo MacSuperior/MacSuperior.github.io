@@ -2,7 +2,10 @@ project:
   type: website
 
 website:
-  google-analytics: "G-41DNWB0BJ3"
+  google-analytics: 
+    tracking-id: "G-41DNWB0BJ3"
+    storage: none
+    anonymize-ip: true
   title: "Liam's Learning"
   navbar:
     left:
@@ -11,19 +14,19 @@ website:
       - about.qmd
       - icon: github
         href: https://github.com/liamgroen
-  comments:
-    giscus:
-      repo: "liamgroen/liamgroen.github.io"
-
 
 
 format:
   html:
+    respect-user-color-scheme: true
     theme:
+      light: 
       - cosmo
       - brand
+      dark:
+      - darkly
+      - brand
     css: styles.css
-
 
 execute:
   freeze: auto
