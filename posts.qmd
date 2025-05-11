@@ -1,5 +1,9 @@
 ---
 title: "Posts"
+pagetitle: "Posts"
+description-meta: "List of posts"
+keywords: [Blog post, Posts overview]
+
 page-layout: article
 title-block-banner: true
 title-block-style: default

@@ -1,5 +1,8 @@
 ---
 title: "About"
+pagetitle: "About"
+description-meta: "About Liam Groen. Get in contact with Liam Groen"
+keywords: [Contact, LinkedIn, Connect, About]
 image: profile.png
 about:
   template: jolla

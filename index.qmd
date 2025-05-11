@@ -1,8 +1,14 @@
 ---
 title: "Home"
+pagetitle: "Home - Liams Learning"
+
 description: "Exploring machine learning, data science, and math through self-study and blogging."
+description-meta: "Exploring machine learning, data science, and math through self-study and blogging."
+
 page-layout: article
 title-block-banner: true
+
+keywords: [Blog, Machine learning blog, Deep learning blog, Data science blog, Math blog, PyTorch blog, Machine learning, Deep learning, Data Science, Math]
 listing:
   - id: recent-posts
     max-items: 10
