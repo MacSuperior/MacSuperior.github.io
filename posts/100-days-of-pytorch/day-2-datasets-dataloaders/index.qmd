@@ -1,7 +1,14 @@
 ---
 title: "Day 2: PyTorch Basics - Dataset and DataLoader"
-description: "In this post we learn about how to download datasets with PyTorch Datasets, and how to retrieve data from them for training an ML model while keeping data and model separate. We will see that working with these classes is pretty easy, and allows us to use all kinds of handy built-in methods. "
+pagetitle: "PyTorch Basics - Dataset and DataLoader"
+
+description: "In this post we learn about how to download datasets with PyTorch Datasets, and how to retrieve data from them for training an ML model while keeping data and model separate. We will see that working with these classes is pretty easy, and allows us to use all kinds of handy built-in methods."
+description-meta: "In this post we learn about how to download datasets with PyTorch Datasets, and how to retrieve data from them for training an ML model while keeping data and model separate. We will cover how to use the PyTorch Dataset class, Dataset attributes, How to use the Pytorch DataLoader class, and how to control the DataLoader sample"
+
 date: "2025-05-09" 
+date-meta: "2025-05-09"
+
+keywords: [Dataset, DataLoader, PyTorch Dataset, Pytorch Dataloader]
 jupyter: python3
 ---
 

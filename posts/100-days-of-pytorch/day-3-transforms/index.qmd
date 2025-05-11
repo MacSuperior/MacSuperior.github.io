@@ -1,7 +1,14 @@
 ---
 title: "Day 3: Pytorch Basics - Transforms"
-decsription: "In this post, we will look at how to transform images using the built-in `ToTensor` method. We will also look at how to specify a tranform ourselves"
+pagetitle: "Pytorch Basics - Transforms"
+
+decsription: "In this post, we will learn how to transform images using the built-in `ToTensor` method. We will also learn how to create and use a custom transform that we define ourselves"
+description-meta: "In this post, we will learn how to transform images using the built-in `ToTensor` method. We will also learn how to create and use a custom transform that we define ourselves"
+
 date: "2025-05-10" 
+date-meta: "2025-05-10"
+
+keywords: [Transforms, ToTensor, PyTorch ToTensor, PyTorch transforms]
 jupyter: python3
 ---
 
