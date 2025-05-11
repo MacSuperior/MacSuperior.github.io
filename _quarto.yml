@@ -5,6 +5,7 @@ website:
   title: "Liam's Learning"
   description: "Posts about machine learning, deep learning, math and coding."
   site-url: "https://liamgroen.nl"
+  image: "site-image.jpg"
   open-graph: true
   google-analytics: 
     tracking-id: "G-41DNWB0BJ3"
