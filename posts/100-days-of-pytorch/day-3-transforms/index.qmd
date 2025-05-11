@@ -1,6 +1,7 @@
 ---
 title: "Day 3: Pytorch Basics - Transforms"
 pagetitle: "Pytorch Basics - Transforms"
+image: TransformManyVectors.svg
 
 decsription: "In this post, we will learn how to transform images using the built-in `ToTensor` method. We will also learn how to create and use a custom transform that we define ourselves"
 description-meta: "In this post, we will learn how to transform images using the built-in `ToTensor` method. We will also learn how to create and use a custom transform that we define ourselves"

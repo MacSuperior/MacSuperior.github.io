@@ -1,7 +1,13 @@
 ---
 title: "Backpropagation: How Does Your Computer Calculate Gradients?"
+pagetitle: "Backpropagation: How Does Your Computer Calculate Gradients?"
 description: "How backpropagation is used to compute gradients in neural networks, using computational graphs and the chain rule."
+description-meta: "How backpropagation is used to compute gradients in neural networks, using computational graphs and the chain rule."
 date: "2025-04-20"
+date-meta: "2025-04-20"
+date-modified: "2025-05-11"
+image: "./images/preview.png"
+keywords: [Backpropagation, Chain rule, Gradient, Neural network, Computational graph]
 categories: [explanation]
 ---
 
@@ -66,7 +72,7 @@ During the forward pass, every node received input from its *upstream* nodes, pe
 ## Propagating backward
 Let's zoom in on a random node during the backward pass. 
 
-![A node calculating how its inputs affect the loss, passing these values downstream.](./images/node.png)
+![A node calculating how its inputs affect the loss, passing these values downstream.](./images/node.png "A node calculating how its inputs affect the loss, passing these values downstream.")
 
 Eventually, this node will receive a number from its output node, called the <span style="color:rgb(221, 46, 34);background-color:yellow">upstream gradient</span>. This represents the change in the loss function all the way at the end of the graph when the output of this particular node changes. If the node receives multiple upstream gradients, it sums them up. After receiving the upstream gradient, the node computes <span style="color:rgb(68, 109, 195)">local gradients</span>, which represent how much each output of the node is affected by each input to the node. The node then calculates how each of its inputs affects the loss by multiplying each local gradient by the upstream gradient, and passes these <span style="color:rgb(221, 46, 34);">downstream gradients</span> to the respective input nodes. These input nodes then receive it as their own upstream gradient, repeating the process. 
 
