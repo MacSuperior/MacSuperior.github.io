@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://liamgroen.nl/about.html</loc>
-    <lastmod>2025-05-11T12:53:21.425Z</lastmod>
+    <lastmod>2025-05-12T07:16:43.160Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts.html</loc>
-    <lastmod>2025-05-11T12:53:21.428Z</lastmod>
+    <lastmod>2025-05-12T07:16:43.163Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/backpropagation/index.html</loc>
-    <lastmod>2025-05-11T12:53:21.753Z</lastmod>
+    <lastmod>2025-05-12T07:16:43.786Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-3-transforms/index.html</loc>
-    <lastmod>2025-05-11T12:53:21.734Z</lastmod>
+    <lastmod>2025-05-12T07:16:43.766Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html</loc>
+    <lastmod>2025-05-12T07:16:43.766Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html</loc>
-    <lastmod>2025-05-11T12:53:21.439Z</lastmod>
+    <lastmod>2025-05-12T07:16:43.470Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-1-tensors/index.html</loc>
-    <lastmod>2025-05-11T12:53:21.439Z</lastmod>
+    <lastmod>2025-05-12T07:16:43.175Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/100-days-of-pytorch.html</loc>
-    <lastmod>2025-05-11T12:53:21.422Z</lastmod>
+    <lastmod>2025-05-12T07:16:43.157Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/index.html</loc>
-    <lastmod>2025-05-11T12:53:21.425Z</lastmod>
+    <lastmod>2025-05-12T07:16:43.160Z</lastmod>
   </url>
 </urlset>
