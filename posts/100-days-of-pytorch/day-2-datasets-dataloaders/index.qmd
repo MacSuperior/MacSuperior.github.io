@@ -8,7 +8,7 @@ description-meta: "In this post we learn about how to download datasets with PyT
 date: "2025-05-09" 
 date-meta: "2025-05-09"
 
-keywords: [Dataset, DataLoader, PyTorch Dataset, Pytorch Dataloader]
+keywords: [Dataset, DataLoader]
 jupyter: python3
 ---
 

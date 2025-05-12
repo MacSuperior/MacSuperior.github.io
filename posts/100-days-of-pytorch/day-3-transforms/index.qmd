@@ -9,7 +9,7 @@ description-meta: "In this post, we will learn how to transform images using the
 date: "2025-05-10" 
 date-meta: "2025-05-10"
 
-keywords: [Transforms, ToTensor, PyTorch ToTensor, PyTorch transforms]
+keywords: [Transforms, ToTensor]
 jupyter: python3
 ---
 
