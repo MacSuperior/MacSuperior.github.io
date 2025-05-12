@@ -379,10 +379,16 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 12, 2025</p>
+        <p class="date">May 11, 2025</p>
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">May 12, 2025</p>
+      </div>
+    </div>
       
     </div>
     
@@ -423,7 +429,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <summary>
 Show imports
 </summary>
-<div id="64cc6fc8" class="cell" data-execution_count="1">
+<div id="f10171ff" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
@@ -432,7 +438,7 @@ Show imports
 </div>
 </details>
 <p>PyTorch allows us to create any neural network, using predefined building blocks from the module <code>torch.nn</code>. Every neural network we create should specify the <code>forward</code> method</p>
-<div id="fa0259eb" class="cell" data-execution_count="2">
+<div id="4e1f9f5f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OurNeuralNetwork(nn.Module):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
@@ -457,14 +463,14 @@ Show imports
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> predictions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Lets instantiate it. In PyTorch, we also have to specify it on what device type we want to train our model. This allows for quicker training, depending on device type.</p>
-<div id="14e49b2d" class="cell" data-execution_count="3">
+<div id="29630da3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> OurNeuralNetwork().to(<span class="st">"cpu"</span>) <span class="co"># or cuda, mps, mtia, xpu</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"using cpu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>using cpu</code></pre>
 </div>
 </div>
-<div id="f8d71cf3" class="cell" data-execution_count="4">
+<div id="bd52b7cf" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>OurNeuralNetwork(
@@ -483,11 +489,11 @@ Show imports
 <section id="testing-the-network" class="level2">
 <h2 class="anchored" data-anchor-id="testing-the-network">Testing the Network</h2>
 <p>Lets simulate an 28x28 pixel image with some random numbers</p>
-<div id="fa90d33a" class="cell" data-execution_count="5">
+<div id="56f63179" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">28</span>, <span class="dv">28</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fake_image <span class="op">=</span> torch.rand(shape, device<span class="op">=</span><span class="st">"cpu"</span>) <span class="co"># the tensor needs to be on the same device as the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="62d91e68" class="cell" data-execution_count="6">
+<div id="ab0e90aa" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show plotting code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -505,16 +511,16 @@ Show imports
 </div>
 </div>
 </div>
-<div id="8195cf4e" class="cell" data-execution_count="7">
+<div id="438b772f" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model_outputs <span class="op">=</span> model(fake_image)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Even though we specified <code>nn.Linear(in_features=28*28)</code>, we set <code>shape = (1, 28, 28)</code> and not to <code>(28, 28)</code>. This is because the model expects the first number to be the amount of images we use per batch of training. Since we are not actually training the model right now we set it to <code>1</code>.</p>
-<div id="7ade2207" class="cell" data-execution_count="8">
+<div id="57f72a47" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>)(model_outputs)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>predicted_label <span class="op">=</span> probabilities.argmax(<span class="dv">1</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>predicted_label.item()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>8</code></pre>
+<pre><code>3</code></pre>
 </div>
 </div>
 <p>Of course, the output is completely random, since the network was not trained and since the image was not actually a number.</p>
@@ -522,7 +528,7 @@ Show imports
 <section id="training-and-evaluating-the-network" class="level2">
 <h2 class="anchored" data-anchor-id="training-and-evaluating-the-network">Training and Evaluating the Network</h2>
 <p>Let’s train the network on the FashionMNIST dataset to classify images. For this we import the dataset using the code from a previous post explaining PyTorch <a href="../datasets-dataloaders/index.qmd">Datasets and DataLoaders</a></p>
-<div id="8f6a31c4" class="cell" data-execution_count="9">
+<div id="3bccd11f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> datasets.FashionMNIST(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">True</span>,</span>
@@ -547,7 +553,7 @@ Show imports
 <li><p><strong>Batch Size -</strong> How much examples to iterate over before updating parameters.</p></li>
 </ul>
 <p>Per batch of images, model parameters are updated, until all images in the dataset have been seen. This process is repeated for the specified number of epochs.</p>
-<div id="f1ad1362" class="cell" data-execution_count="10">
+<div id="a0dfd253" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">1e-3</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> <span class="dv">64</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -557,7 +563,7 @@ Show imports
 <li><p><strong>Training Loop -</strong> Update parameters by showing model images with labels (from <code>train_dataloader</code>)</p></li>
 <li><p><strong>Checking Loop -</strong> Evaluate model performance with learned parameters from the training loop on new images (from <code>test_dataloader</code>)</p></li>
 </ul>
-<div id="06350b00" class="cell" data-execution_count="11">
+<div id="fec94579" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_loop(dataloader, model, loss_func, optimizer):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(dataloader.dataset)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    model.train() <span class="co"># Set model to training mode</span></span>
@@ -604,11 +610,11 @@ Show imports
 <span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Test Error: </span><span class="ch">\n</span><span class="ss"> Accuracy: </span><span class="sc">{</span>(<span class="dv">100</span><span class="op">*</span>correct_amount)<span class="sc">:&gt;0.1f}</span><span class="ss">%, Avg loss: </span><span class="sc">{</span>test_loss<span class="sc">:&gt;8f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Lets train our model, passing a loss function and optimizer.</p>
-<div id="05abdec4" class="cell" data-execution_count="12">
+<div id="203c3864" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>loss_function <span class="op">=</span> nn.CrossEntropyLoss()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.SGD(model.parameters(), lr<span class="op">=</span>learning_rate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4562f4b3" class="cell" data-execution_count="13">
+<div id="122845b6" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
@@ -621,7 +627,7 @@ Show imports
 <summary>
 Show output
 </summary>
-<div id="ff739d95" class="cell" data-execution_count="14">
+<div id="9a4d4457" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Epoch 1
