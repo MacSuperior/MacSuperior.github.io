@@ -202,6 +202,10 @@ def checking_loop(dataloader, model, loss_func):
     print(f"Test Error: \n Accuracy: {(100*correct_amount):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 ```
 
+:::{.callout-warning}
+be sure to call `model.eval()` before inferencing to set the dropout and batch normalization layers (not used in our model) to evaluation mode. Failing to do this will yield inconsistent inference results.
+:::
+
 Lets train our model, passing a loss function and optimizer.
 
 ```{python}
