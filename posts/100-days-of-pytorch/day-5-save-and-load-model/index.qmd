@@ -3,8 +3,9 @@ title: "Day 5: PyTorch Basics - Saving and Loading Models"
 pagetitle: "PyTorch Basics - Saving and Loading Models"
 description: "Previously, we learned how to train a neural network model. But how do we actually make predictions with it? And how can we use open-source models that other people trained? In this post we learn how to store and load the weights that the model learned during training, and how to use open-source models and weights"
 description-meta: "In this post we learn how to store and load the weights that the model learned during training, and how to use open-source models and weights, using torchvision.models"
-date: "2025-05-13"
-date-meta: "2025-05-13"
+image: "thumbnail.jpg"
+date: "2025-05-12"
+date-meta: "2025-05-12"
 
 keywords: [Save PyTorch model, Load PyTorch model, Open-Source Models, Pre Trained Model]
 jupyter: python3
@@ -15,7 +16,7 @@ jupyter: python3
 - [Deploying a model to HuggingFace Spaces through ONNX](../day-6-deploying-model-to-huggingface-spaces-through-onnx/index.qmd)
 
 ## How to Save a PyTorch Model?
-Lets reuse our model training code from the [previous blog post](../day-4-building-and-training-a-neural-network/index.qmd).
+Let's reuse our model training code from the [previous blog post](../day-4-building-and-training-a-neural-network/index.qmd).
 
 ```{python}
 #| output: false
@@ -300,16 +301,17 @@ Done!""")
 ```
 </details>
 
-The learned weights are stored in an attribute called `state_dict`. We can save the weights to a file to reuse them later by calling `torch.save()` on the `state_dict()`.
+The learned weights are stored in an attribute called `state_dict`. We can save these weights to a file to reuse them later by calling `torch.save()` on the attribute.
 
 ```{python}
 torch.save(model.state_dict(), "model_weights.pth")
 ```
 
 ## How to Load a Saved Model?
-To load the saved model, we first need to create a new instance of the same model class. Just the weights wont do us any good, they need to correspond to the correct model structure. After instantiating a new model, we can copy the weights to it.
+To load the saved model, we first need to create a new instance of the same model class. Just the weights won't do us any good, they need to correspond to the correct model structure. After instantiating a new model, we can copy the weights to it.
 
 ```{python}
+#| output: false
 weights = torch.load("model_weights.pth", weights_only=True)
 
 model_from_weights = OurNeuralNetwork()
@@ -317,13 +319,21 @@ model_from_weights.load_state_dict(weights)
 model_from_weights.eval()
 ```
 
+<details><summary>Show output</summary>
+
+```{python}
+#| echo: false
+model_from_weights.eval()
+```
+</details>
+
 We now have an exact copy of the neural network in a new variable! 
 
 If we want, we can inspect all the parameters (e.g to create visualizations that explain the model) through the models' `state_dict()`
 
 ```{python}
 #| eval: false
-layer_2_bias = model.state_dict()['linear_relu_chain.2.bias'] # We can acces stored parameters through the state_dict keys
+layer_2_bias = model.state_dict()['linear_relu_chain.2.bias'] # We can access stored parameters through the state_dict keys
 print("stored parameters in the form of 'layer_num.type': ", model.state_dict().keys(), '\n')
 print("Amount of values in the layer 2 bias:", layer_2_bias.shape, '\n') 
 print("First 10 biases in layer 2:", layer_2_bias[:10])
@@ -331,7 +341,7 @@ print("First 10 biases in layer 2:", layer_2_bias[:10])
 
 ```{python}
 #| echo: false
-#layer_2_bias = model.state_dict()['linear_relu_chain.2.bias'] # We can acces stored parameters through the state_dict keys
+layer_2_bias = model.state_dict()['linear_relu_chain.2.bias'] # We can access stored parameters through the state_dict keys
 print("stored parameters in the form of 'layer_num.type': ")
 print("[")
 for state in model.state_dict().keys():
@@ -341,13 +351,9 @@ print("Amount of values in the layer 2 bias:", layer_2_bias.shape, '\n')
 print("First 3 biases in layer 2:", layer_2_bias[:3])
 ```
 
-:::{.callout-warning}
-be sure to call `model.eval()` before inferencing to set the dropout and batch normalization layers (not used in our model) to evaluation mode. Failing to do this will yield inconsistent inference results.
-:::
-
 ## How to Use Pre-Trained Models?
 
-We don't *have* to train every model that we want to use ourselves. Lots of times, a better model trained on more data for longer is available freely online. PyTorch comes with [bre-built model structures](https://docs.pytorch.org/vision/stable/models.html) and weights for these models.
+We don't *have* to train every model that we want to use ourselves. Lots of times, a better model trained on more data for longer is available freely online. PyTorch comes with [pre-built model structures](https://docs.pytorch.org/vision/stable/models.html) and weights for these models.
 
 ```{python}
 #| eval: false
