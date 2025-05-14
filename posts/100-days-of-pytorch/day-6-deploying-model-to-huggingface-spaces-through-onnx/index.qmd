@@ -1,0 +1,291 @@
+---
+title: "Day 6: PyTorch Basics - Deploying Model to HuggingFace Spaces With Gradio and ONNX"
+pagetitle: "PyTorch Basics - Deploying Model to HuggingFace Spaces Through Gradio and ONNX"
+description: "Deploying your model might seem like a daunting task, and in some cases, it certainly is. But it is arguably one of the most import things to learn, since a model that never makes it out of your local machine is not useful to anybody. In this post we learn how to convert a trained model to the ONNX format, and deploy it permanently on HuggingFace for free with Gradio."
+description-meta: "Learn how to convert a trained model to the ONNX format, and deploy it permanently on HuggingFace for free with Gradio."
+image: "thumbnail.png"
+date: "2025-05-13"
+date-meta: "2025-05-13"
+
+keywords: [ONNX, HuggingFace, HuggingFace Spaces, Deploy Model, Gradio]
+jupyter: python3
+---
+
+At the end of this tutorial, we will have a running deployment of an ONNX model on Hugging Face Spaces:
+<iframe
+  src="https://liamgroen-onnx-demo.hf.space/"
+  frameborder="0"
+  width="100%"
+  height="600px"
+  style="min-width:400px;"
+></iframe>
+
+## What is ONNX?
+
+There exist many different deep learning frameworks, across many different programming language. [ONNX](https://onnx.ai/) is a standard that defines a common set of building blocks and file format so that no matter what technology is used to train a model, when it is rendered to ONNX, it can be deployed [virtually anywhere](https://onnx.ai/supported-tools.html#deployModel).
+
+## Converting to ONNX
+In this section I assume that you have a trained model called `torch_model`. If you don't have one, or don't know how to train your own model yet, [this post](../day-4-building-and-training-a-neural-network/index.qmd) explains how to build and train your own model.
+
+Let's export our model to ONNX format. Since `onnx.export` runs the model, we need to supply an example input. Furthermore If we don't want the batch size to be stationary, we need to set the `dynamic_axes` parameter.
+
+```{python}
+#| echo: false
+#| output: false
+from torch import nn
+import torch
+
+class OurNeuralNetwork(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        # Define neural net structure here, so we can store weights in them.
+        self.flatten = nn.Flatten()
+        self.linear_relu_chain = nn.Sequential(
+            nn.Linear(in_features=28*28, out_features=512),
+            nn.ReLU(),
+            nn.Linear(in_features=512, out_features=512),
+            nn.ReLU(),
+            nn.Linear(512, 10)
+        )
+    
+    def forward(self, input):
+        # Use neural net structure to pass input data through
+
+        input = self.flatten(input) # Shape: (28,28) -> shape: (784)
+
+        predictions = self.linear_relu_chain(input) # Shape: (784) -> shape: (512) -> shape: (512) -> shape: (10)
+        
+        return predictions
+torch_model = OurNeuralNetwork()
+model_weights = torch.load("../day-5-save-and-load-model/model_weights.pth")
+torch_model.load_state_dict(model_weights)
+torch_model.eval()
+```
+
+```{python}
+#| output: false
+batch_size = 1 # Random batch size
+example_inputs = torch.rand((batch_size, 28, 28))
+
+onnx_program = torch.onnx.export(torch_model,
+                                 example_inputs,
+                                 input_names=['input'],
+                                 output_names=['output'],
+                                 dynamic_axes = { # variable input/output: first dimension, corresponding to batch size
+                                     'input' : {0 : 'batch_size'}, 
+                                     'output' : {0 : 'batch_size'}
+                                     },
+                                 f="converted_model.onnx",
+                                 export_params=True,
+                                 do_constant_folding=True # Optimization
+                                 )
+```
+
+## Running The ONNX Model
+
+We can run *any* ONNX model inside python, using the `onnxruntime` package. Let's run our own model that we just exported by downloading it from `converted_model.onnx`.
+
+```{python}
+#| eval:  false
+import onnx
+
+model = onnx.load("converted_model.onnx")
+onnx.checker.check_model(model) # If this does not raise an error, we can continue
+```
+
+Since ONNX does not support all data types that PyTorch uses, we need to do a bit of pre-processing before we can actually run the model.
+
+```{python}
+#| echo: false
+#| output: false
+
+import onnx
+import onnxruntime as ort
+import numpy as np
+from torch.utils.data import DataLoader
+from torchvision import datasets, transforms
+
+
+# Define a 'session', which will run the model
+ort_session = ort.InferenceSession("converted_model.onnx", providers=["CPUExecutionProvider"])
+
+# The function that will convert PyTorch inputs to ONNX inputs
+def to_numpy(tensor):
+    return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
+
+# Sample image 
+
+training_data = datasets.FashionMNIST(
+    root="../day-5-save-and-load-model/data",
+    train=True,
+    download=False,
+    transform=transforms.ToTensor()
+)
+
+train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
+
+X, y = next(iter(train_dataloader))
+testing_image = X[0]
+testing_image_label = y[0]
+
+input_name = ort_session.get_inputs()[0].name #  We specified this in our onnx_program's input_names parameter
+input_values = to_numpy(testing_image)
+ort_inputs = {input_name: input_values}
+
+ort_outputs = ort_session.run(None, ort_inputs)
+
+
+```
+
+```{python}
+#| eval: false
+import onnxruntime as ort
+import numpy as np
+
+# Define a 'session', which will run the model
+ort_session = ort.InferenceSession("converted_model.onnx", providers=["CPUExecutionProvider"])
+
+# The function that will convert PyTorch inputs to ONNX inputs
+def to_numpy(tensor):
+    return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
+
+# Sample image 
+
+training_data = datasets.FashionMNIST(
+    root="data",
+    train=True,
+    download=True,
+    transform=transforms.ToTensor()
+)
+
+train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
+
+X, y = next(iter(train_dataloader))
+testing_image = X[0]
+testing_image_label = y[0]
+
+input_name = ort_session.get_inputs()[0].name #  We specified this in our onnx_program's input_names parameter
+input_values = to_numpy(testing_image)
+ort_inputs = {input_name: input_values}
+
+ort_outputs = ort_session.run(None, ort_inputs)
+```
+
+:::{.callout-tip}
+I specified `None` for the output_names parameter of the `.run()` method. This computes all outputs. If we had specific outputs defined in `onnx_program`'s `output_names`, we could pass them here in a list. In this case, running `.run(output_names=['output'])` would result in the same output.
+:::
+
+## Sanity Checking Output
+Using ONNX comes with the advantage of a standardized model format which we can run anywhere, but it still needs to give the same output as the model that we trained using PyTorch. Let's make sure that nothing went wrong during conversion by comparing the PyTorch model output and the ONNX model output on the same input:
+
+
+```{python}
+torch_outputs = torch_model(testing_image)
+torch_outputs = to_numpy(torch_outputs)
+
+np.testing.assert_allclose(ort_outputs[0], torch_outputs, rtol=1e-03, atol=1e-05) # No error: good to go!
+```
+
+## How To Get ONNX predicted labels?
+We can get the labels back by using `np.argmax`: 
+
+```{python}
+idx_to_class = {
+    0: 'T-shirt/top',
+    1: 'Trouser',
+    2: 'Pullover',
+    3: 'Dress',
+    4: 'Coat',
+    5: 'Sandal',
+    6: 'Shirt',
+    7: 'Sneaker',
+    8: 'Bag',
+    9: 'Ankle boot'
+}
+label_index = np.argmax(ort_outputs[0], axis=1).item()
+class_label = idx_to_class[label_index]
+```
+
+:::{.callout-tip}
+When using a pre-trained model from torchvision.models, we can retrieve the class label through `weights.meta["categories"]`. E.g `ResNet50_Weights.meta["categories"][label_index]`
+:::
+
+## Deploying ONNX models
+In this section we will deploy our model to [HuggingFace Spaces]()
+
+For demonstration purposes I will be using a [ResNet-50](https://docs.pytorch.org/vision/stable/models/generated/torchvision.models.resnet50.html) with default weights, saved as a '.onnx' file. 
+
+Follow these steps to get started:
+
+1. ### Create an account
+Create an account at [Hugging Face](https://huggingface.co/login) if you don't have one.
+
+2. ### Create a new space
+Select 'Gradio' as the Space SDK. Gradio is a high-level API that generates a UI for machine learning models with very few code.
+
+3. ### Generate a password for the Space
+Go to Settings > Access tokens, and scroll down to 'Repositories permissions'. Select your space and click the write permissions.
+
+4. ### Push the app
+We only need to specify 2 functions to create a UI and do inference. The `predict` function, and a preprocessing function. The last depends on the model that you are using. PyTorch pre-trained models also have their required preprocessing made available through `{weights_name.VERSION}.transforms()`:
+
+```{python}
+#| code-fold: true
+#| code-summary: Show imports
+
+import numpy as np
+import onnxruntime as ort
+import gradio as gr
+from PIL import Image
+from torchvision.models import ResNet50_Weights
+```
+
+```{python}
+#| eval: false
+weights = ResNet50_Weights.DEFAULT
+preprocess = weights.transforms() # Necessary input transformations
+ort_session = ort.InferenceSession("resnet50.onnx", providers=["CPUExecutionProvider"])
+
+def preprocess_inputs(img: Image):
+    img = preprocess(img) # Change this line when using a different model
+    img_array = np.array(img).astype(np.float32)
+    img_array = np.expand_dims(img_array, axis=0)
+    return img_array
+
+def predict(img):
+    img = preprocess_inputs(img)
+    ort_inputs = {ort_session.get_inputs()[0].name: img}
+    ort_outputs = ort_session.run(None, ort_inputs)
+
+    label_index = np.argmax(ort_outputs[0], axis=1).item()
+    predicted_label = weights.meta["categories"][label_index]
+    return predicted_label
+```
+
+That's it! Now we can build the interface:
+
+```{python}
+#| eval: false
+demo = gr.Interface(predict, gr.Image(type="pil", image_mode="RGB"), gr.Label())
+demo.launch()
+```
+
+Your file structure should look like this:
+```{python}
+#| echo: false
+print(
+""".
+├── README.md
+├── app.py
+├── requirements.txt
+└── resnet50.onnx"""
+)
+```
+
+
+When all the code is in `app.py` and your project dependencies (imports) are listed in a `requirements.txt` you are ready to push and deploy. Run `git push`. If you encounter an error, you will need to [install git-lfs](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage)
+
+## Further Reading
+
+- [Official Gradio Quickstart](https://www.gradio.app/guides/quickstart)
