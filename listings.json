@@ -2,6 +2,8 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html",
+      "/posts/100-days-of-pytorch/day-5-save-and-load-model/index.html",
       "/posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html",
       "/posts/100-days-of-pytorch/day-3-transforms/index.html",
       "/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html",
@@ -12,6 +14,8 @@
   {
     "listing": "/100-days-of-pytorch.html",
     "items": [
+      "/posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html",
+      "/posts/100-days-of-pytorch/day-5-save-and-load-model/index.html",
       "/posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html",
       "/posts/100-days-of-pytorch/day-3-transforms/index.html",
       "/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html",
@@ -21,6 +25,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html",
+      "/posts/100-days-of-pytorch/day-5-save-and-load-model/index.html",
       "/posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html",
       "/posts/100-days-of-pytorch/day-3-transforms/index.html",
       "/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html",

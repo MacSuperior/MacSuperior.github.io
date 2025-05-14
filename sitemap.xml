@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://liamgroen.nl/about.html</loc>
-    <lastmod>2025-05-12T20:50:27.830Z</lastmod>
-  </url>
-  <url>
     <loc>https://liamgroen.nl/posts.html</loc>
-    <lastmod>2025-05-12T20:50:27.833Z</lastmod>
+    <lastmod>2025-05-14T00:01:00.152Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.nl/posts/backpropagation/index.html</loc>
-    <lastmod>2025-05-12T20:50:28.454Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-3-transforms/index.html</loc>
-    <lastmod>2025-05-12T20:50:28.434Z</lastmod>
+    <loc>https://liamgroen.nl/about.html</loc>
+    <lastmod>2025-05-14T00:01:00.148Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html</loc>
-    <lastmod>2025-05-12T20:50:28.434Z</lastmod>
+    <lastmod>2025-05-14T00:01:00.729Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html</loc>
-    <lastmod>2025-05-12T20:50:28.139Z</lastmod>
+    <lastmod>2025-05-14T00:01:00.453Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-5-save-and-load-model/index.html</loc>
+    <lastmod>2025-05-14T00:01:01.002Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liamgroen.nl/posts/backpropagation/index.html</loc>
+    <lastmod>2025-05-14T00:01:01.045Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-3-transforms/index.html</loc>
+    <lastmod>2025-05-14T00:01:00.729Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html</loc>
+    <lastmod>2025-05-14T00:01:01.026Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-1-tensors/index.html</loc>
-    <lastmod>2025-05-12T20:50:27.844Z</lastmod>
+    <lastmod>2025-05-14T00:01:00.162Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/100-days-of-pytorch.html</loc>
-    <lastmod>2025-05-12T20:50:27.826Z</lastmod>
+    <lastmod>2025-05-14T00:01:00.145Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/index.html</loc>
-    <lastmod>2025-05-12T20:50:27.830Z</lastmod>
+    <lastmod>2025-05-14T00:01:00.148Z</lastmod>
   </url>
 </urlset>
