@@ -222,7 +222,7 @@ Follow these steps to get started:
 Create an account at [Hugging Face](https://huggingface.co/login) if you don't have one.
 
 2. ### Create a new space
-Select 'Gradio' as the Space SDK. Gradio is a high-level API that generates a UI for machine learning models with very few code.
+Create a new space and select 'Gradio' as the Space SDK. Gradio is a high-level API that generates a UI for machine learning models with very few code. After a bit of waiting you are able to clone the repository to your local machine.
 
 3. ### Generate a password for the Space
 Go to Settings > Access tokens, and scroll down to 'Repositories permissions'. Select your space and click the write permissions.
@@ -284,7 +284,7 @@ print(
 ```
 
 
-When all the code is in `app.py` and your project dependencies (imports) are listed in a `requirements.txt` you are ready to push and deploy. Run `git push`. If you encounter an error, you will need to [install git-lfs](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage)
+When all the code is in `app.py` and your project dependencies (imports) are listed in `requirements.txt` you are ready to push and deploy by running `git push`. If you encounter an error, you will need to [install git-lfs](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage)
 
 ## Further Reading
 
